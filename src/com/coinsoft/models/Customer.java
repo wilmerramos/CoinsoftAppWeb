@@ -5,14 +5,14 @@ import java.sql.SQLException;
 public class Customer {
     private int idcustomer;
     private String name;
-    private String last_name;
+    private String lastName;
     private int age;
     private String status;
 
-    public Customer(int idcustomer, String name, String last_name, int age, String status) {
+    public Customer(int idcustomer, String name, String lastName, int age, String status) {
         this.idcustomer = idcustomer;
         this.name = name;
-        this.last_name = last_name;
+        this.lastName = lastName;
         this.age = age;
         this.status = status;
 
@@ -39,12 +39,12 @@ public class Customer {
         return this;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getlastName() {
+        return lastName;
     }
 
     public Customer setLast_name(String last_name) {
-        this.last_name = last_name;
+        this.lastName = lastName;
         return this;
 
     }
@@ -73,7 +73,7 @@ public class Customer {
             return new Customer(
                     rs.getInt("idcustomer"),
                     rs.getString("name"),
-                    rs.getString("last_name"),
+                    rs.getString("lastName"),
                     rs.getInt("age"),
                     rs.getString("status")
             );

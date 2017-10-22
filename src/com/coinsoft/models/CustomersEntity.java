@@ -48,9 +48,9 @@ public class CustomersEntity extends BaseEntity {
                 String.format("WHERE name = '%s'", name)).get(0);
     }
 
-    public Customer findByLastName(String last_name) {
+    public Customer findByLastName(String lastName) {
         return findByCriteria(
-                String.format("WHERE last_name = '%s'", last_name)).get(0);
+                String.format("WHERE last_name = '%s'", lastName)).get(0);
     }
 
     public List<Customer> findAll(CustomersEntity customersEntity) {
@@ -63,21 +63,21 @@ public class CustomersEntity extends BaseEntity {
     public boolean create(Customer customer) {
         return executeUpdate(String.format(
                 "INSERT INTO %s(idcustomer, name, last_name, age , status ) VALUES(%d, '%s', '%s',%d,'%s')",
-                getTableName(), customer.getIdcustomer(), customer.getName(), customer.getLast_name(),
+                getTableName(), customer.getIdcustomer(), customer.getName(), customer.getlastName(),
                 customer.getAge(),customer.getStatus()));
     }
 
-    public boolean create(int id, String name, String last_name,int age, String status) {
-        return create(new Customer(id, name,last_name,age,status));
+    public boolean create(int id, String name, String lastName,int age, String status) {
+        return create(new Customer(id, name,lastName,age,status));
     }
 
-    public boolean update(int id, String name, String last_name,int age, String status) {
+    public boolean update(int id, String name, String lastName,int age, String status) {
         return executeUpdate(String.format(
                 "UPDATE %s SET name = '%s', last_name='%s',  WHERE idcustomer = %d", getTableName(), name, id));
     }
 
     public boolean update(Customer customer) {
-        return update(customer.getIdcustomer(), customer.getName(), customer.getLast_name(),
+        return update(customer.getIdcustomer(), customer.getName(), customer.getlastName(),
                 customer.getAge(), customer.getStatus() );}
 
 

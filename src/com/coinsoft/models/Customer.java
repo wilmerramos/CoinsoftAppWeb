@@ -3,30 +3,29 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Customer {
-    private int idcustomer;
+    private int id;
     private String name;
     private String lastName;
     private int age;
     private String status;
 
-    public Customer(int idcustomer, String name, String lastName, int age, String status) {
-        this.idcustomer = idcustomer;
+    public Customer(int id, String name, String lastName, int age, String status) {
+        this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.age = age;
         this.status = status;
-
     }
+
     public Customer() {
-
     }
 
-    public int getIdcustomer() {
-        return idcustomer;
+    public int getId() {
+        return id;
     }
 
-    public Customer setIdcustomer(int idcustomer) {
-        this.idcustomer = idcustomer;
+    public Customer setId(int id) {
+        this.id = id;
         return this;
     }
 
@@ -39,14 +38,13 @@ public class Customer {
         return this;
     }
 
-    public String getlastName() {
+    public String getLastName() {
         return lastName;
     }
 
-    public Customer setLast_name(String last_name) {
+    public Customer setLastName(String lastName) {
         this.lastName = lastName;
         return this;
-
     }
 
     public int getAge() {
@@ -67,13 +65,12 @@ public class Customer {
         return this;
     }
 
-
     public static Customer from(ResultSet rs) {
         try {
             return new Customer(
-                    rs.getInt("idcustomer"),
+                    rs.getInt("costumer_id"),
                     rs.getString("name"),
-                    rs.getString("lastName"),
+                    rs.getString("last_name"),
                     rs.getInt("age"),
                     rs.getString("status")
             );
@@ -83,6 +80,7 @@ public class Customer {
         return null;
 
     }
+
 
 }
 

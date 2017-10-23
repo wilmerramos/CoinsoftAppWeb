@@ -20,13 +20,47 @@ public class CmDataStore {
     public CmDataStore() {
     }
 
-
     public Customer findCustomerById(int id){
         if(connection==null) return null;
-
         return  getCustomersEntity().findById(id);
     }
 
+    public Customer findCustomerByName(String name){
+        if(connection==null) return null;
+        return  getCustomersEntity().findByName(name);
+    }
+
+    public Customer findCustomerByLastName(String lastName){
+        if(connection==null) return null;
+        return  getCustomersEntity().findByLastName(lastName);
+    }
+
+    public List<Customer> findAllCustomers() {
+        return connection == null ? null: getCustomersEntity().findAll();
+    }
+
+    public Customer createCustomer(String name, String lastName,int age, String status) {
+        return connection == null ?
+                null :
+                getCustomersEntity().create(name,lastName,age,status);
+    }
+
+    public boolean updateCustomer(int id, String name, String lastName,int age, String status) {
+        return connection == null ?
+                false :
+                getCustomersEntity().update(id,name,lastName,age,status);
+    }
+
+    public boolean updateCustomer(Customer customer) {
+        return updateCustomer(customer.getId(), customer.getName(),customer.getLastName(),customer.getAge(),customer.getStatus());
+    }
+
+    public boolean eraseCustomer(int id) {
+        return connection == null ?
+                false :
+                getCustomersEntity().erase(id);
+
+    }
 
 
 
@@ -38,8 +72,6 @@ public class CmDataStore {
         this.connection = connection;
     }
 
-
-
     private CustomersEntity getCustomersEntity() {
         if(customersEntity == null) {
             customersEntity = new CustomersEntity();
@@ -47,9 +79,6 @@ public class CmDataStore {
         }
         return customersEntity;
     }
-
-
-
 
 
 }
